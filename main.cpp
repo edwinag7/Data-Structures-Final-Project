@@ -27,7 +27,7 @@ int main()
     while(choice!="5")
     {
         cout<<"======Main Menu======"<<endl;
-        cout<<"1. Build Network"<<endl;
+        cout<<"1. Add Event"<<endl;
         cout<<"2. Print All Plans"<<endl;
         cout<< "3. Delete Plan"<<endl;
         cout<<"4. Clear All Plans"<<endl;
@@ -35,16 +35,15 @@ int main()
         cin>>choice;
 
         if(choice=="1"){
-            test.buildNetwork();
             cout<<"What is the name of this plan?"<<endl;
             cin.ignore();
             getline(cin,planname);
             cout<<"what time is this plan at?"<<endl;
-            cin.ignore();
-            getline(cin,plantime);
+            cin>>plantime;
+
             cout<<"what is the priority level of this plan? On a scale 1 to 10. 10 being very important"<<endl;
-            cin.ignore();
-            getline(cin,planvalue);
+            cin>>planvalue;
+
             test.addEvent(plantime,planname,planvalue);
 
         }

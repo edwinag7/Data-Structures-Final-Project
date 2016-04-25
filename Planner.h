@@ -7,12 +7,18 @@ using namespace std;
 struct Plans{
     string Event;
     string Values;
-//    int Values;
     string Time;
-    int Day;
     Plans *next;
     Plans *previous;
     Plans(){};
+    Plans(string initTime, string initEvent, string initValues, Plans *initnext, Plans *initprevious){
+        Event=initEvent;
+        Values=initValues;
+        Time=initTime;
+        next=initnext;
+        previous=initprevious;
+    }
+
 
 };
 class Planner
