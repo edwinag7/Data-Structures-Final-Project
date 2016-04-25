@@ -29,6 +29,7 @@ class Planner
     protected:
     private:
         Plans *head = NULL;
+        Plans *tail = NULL;
 };
 
 #endif // PLANNER_H
