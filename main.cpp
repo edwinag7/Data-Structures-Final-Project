@@ -39,8 +39,7 @@ int main()
             cin.ignore();
             getline(cin,planname);
             cout<<"what time is this plan at?"<<endl;
-            cin>>plantime;
-
+            getline(cin,plantime);
             cout<<"what is the priority level of this plan? On a scale 1 to 10. 10 being very important"<<endl;
             cin>>planvalue;
 
