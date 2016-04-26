@@ -49,11 +49,19 @@ int main()
         }
         if(choice=="2"){
 
-            test.printEvent();
+            test.printEvent();}
+   {
+        if(choice=="4"){
+            cout<<"Are you sure?"<<endl;
+            cout<<"Please input y or n"<<endl;
+            cin>>Sure;
+            if(Sure=="y"){
+                test.clearPlanner();}
         }
-
+        }
     }
-
-
+    if(choice=="5"){
+        cout << "Goodbye!" << endl;
+    }
     return 0;
 }
