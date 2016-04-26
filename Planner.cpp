@@ -42,3 +42,12 @@ void Planner::addEvent(string time, string planname, string planvalue)
         current->next=addPlan;
         }
 }
+void Planner :: clearPlanner(){
+    Plans *tmp=head;
+    while(tmp!=NULL){
+        head=head->next;
+        delete head;
+        tmp=head;
+    }
+
+}
