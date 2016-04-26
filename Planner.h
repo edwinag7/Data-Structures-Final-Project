@@ -31,7 +31,7 @@ class Planner
         void deleteEvent(string event);
         void traverse();
         void printEvent();
-        void clearPalnner();
+        void clearPlanner();
         void OrganizeTime(string time);
         void OrganizePriority(int Level);
         void OrganizeAlpha(string Letters);
