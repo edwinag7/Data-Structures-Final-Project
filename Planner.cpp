@@ -1,6 +1,5 @@
 #include "Planner.h"
-#include <string>
-#include <iostream>
+
 Planner::Planner()
 {
     head = NULL;
@@ -181,29 +180,25 @@ int count2=0;
         cout<<"Plan Name: "<<timearr[x]->Event<<"  has a priority of: "<<timearr[x]->Values<<" and is scheduled for time: "<<timearr[x]->Time<<endl;
     }
 }
+bool Planner::scheduleConflict()
+{
+    Plans *tmp = new Plans;
+    Plans *tmp2 = new Plans;
+    while (tmp != NULL && tmp2 != NULL)
+    {
+        if (tmp->Time != tmp2->Time)
+        /* If we reach here, then a and b are not NULL and
+           their data is same, so move to next nodes in both
+           lists */
+        tmp = tmp->next;
+        tmp2 = tmp2->next;
+        cout<<"there is a conflict"<<endl;
+        return false;
+    }
 
+    // If linked lists are identical, then 'a' and 'b' must
+    // be NULL at this point.
+    return (tmp == NULL && tmp2 == NULL);
+    cout<<"there is no conflict"<<endl;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

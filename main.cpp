@@ -1,14 +1,14 @@
 #include <iostream>
 #include "Planner.h"
-#include <string>
+
 using namespace std;
 
 int main()
 {
 
-
     Planner test;
     int counter=0;
+    string shore;
     string choice;
     string plantodelete;
     string plantime;
@@ -17,7 +17,9 @@ int main()
     string searchname;
     string searchtime;
     string priosearch;
-    while(choice!="10")
+    string conflict;
+
+    while(choice!="11")
     {
         cout<<"======Main Menu======"<<endl;
         cout<<"1. Add Plan to Schedule"<<endl;
@@ -29,7 +31,8 @@ int main()
         cout<<"7. Search for event by time"<<endl;
         cout<<"8. Search for event by priority level"<<endl;
         cout<<"9. Sort list by priority"<<endl;
-        cout<<"10. Quit"<<endl;
+         cout<<"10. Check to see if there is a schedule conflict"<<endl;
+        cout<<"11. Quit"<<endl;
         cin>>choice;
 
         if(choice=="1"){
@@ -78,9 +81,12 @@ int main()
         if(choice=="9"){
             test.sortbyprio();
         }
+        if(choice=="10"){
+            test.scheduleConflict();
+        }
 
     }
-    if(choice == "10"){
+    if(choice == "11"){
         cout<<"Good Bye"<<endl;
     }
 
