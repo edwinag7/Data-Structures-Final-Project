@@ -86,7 +86,6 @@ void Planner::deleteEvent(string Eventdelete)
     }
     else
     {
-        cout<<"2"<<endl;
         deleteplan=current;
         deleteplan->previous->next=deleteplan->next;
         deleteplan->next->previous=deleteplan->previous;
@@ -192,13 +191,13 @@ bool Planner::scheduleConflict()
            lists */
         tmp = tmp->next;
         tmp2 = tmp2->next;
-        cout<<"there is a conflict"<<endl;
+        cout<<"There are multiple events at one time - there is a conflict"<<endl;
         return false;
     }
 
     // If linked lists are identical, then 'a' and 'b' must
     // be NULL at this point.
     return (tmp == NULL && tmp2 == NULL);
-    cout<<"there is no conflict"<<endl;
+    cout<<"there our no conflicts on the schedule"<<endl;
 
 }
