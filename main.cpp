@@ -38,12 +38,10 @@ int main()
             cout<<"What is the name of this plan?"<<endl;
             cin.ignore();
             getline(cin,planname);
-            cout<<"what time is this plan at?"<<endl;
-            cin>>plantime;
-
-            cout<<"what is the priority level of this plan? On a scale 1 to 10. 10 being very important"<<endl;
+            cout<<"What time is this plan at?"<<endl;
+            getline(cin,plantime);
+            cout<<"What's the priority of this plan? On a scale 1 to 10, 10 being very important"<<endl;
             cin>>planvalue;
-
             test.addEvent(plantime,planname,planvalue);
 
         }
