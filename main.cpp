@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Planner.h"
-
+#include <string>
 using namespace std;
 
 int main()
@@ -17,7 +17,7 @@ int main()
     string searchname;
     string searchtime;
     string priosearch;
-    while(choice!="9")
+    while(choice!="10")
     {
         cout<<"======Main Menu======"<<endl;
         cout<<"1. Add Plan to Schedule"<<endl;
@@ -28,7 +28,8 @@ int main()
         cout<<"6. Search for an event by name"<<endl;
         cout<<"7. Search for event by time"<<endl;
         cout<<"8. Search for event by priority level"<<endl;
-        cout<<"9. Quit"<<endl;
+        cout<<"9. Sort list by priority"<<endl;
+        cout<<"10. Quit"<<endl;
         cin>>choice;
 
         if(choice=="1"){
@@ -36,10 +37,8 @@ int main()
             cin.ignore();
             getline(cin,planname);
             cout<<"what time is this plan at?"<<endl;
-            cin.ignore();
             getline(cin,plantime);
             cout<<"what is the priority level of this plan? On a scale 1 to 10. 10 being very important"<<endl;
-            cin.ignore();
             getline(cin,planvalue);
             test.addEvent(plantime,planname,planvalue);
         }
@@ -76,9 +75,12 @@ int main()
             getline(cin,priosearch);
             test.prioritysearchevent(priosearch);
         }
+        if(choice=="9"){
+            test.sortbyprio();
+        }
 
     }
-    if(choice == "9"){
+    if(choice == "10"){
         cout<<"Good Bye"<<endl;
     }
 

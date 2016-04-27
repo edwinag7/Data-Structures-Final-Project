@@ -1,6 +1,7 @@
 #ifndef PLANNER_H
 #define PLANNER_H
 #include <iostream>
+#include <string>
 using namespace std;
 
 
@@ -26,15 +27,14 @@ class Planner
         ~Planner();
         //void buildNetwork();
         void addEvent(string time, string planname, string planvalue);
-        void deleteEvent(string time, string planname, string planvalue);
         void printEvent();
-        void printDeletedEvent();
         void clearPlanner();
         void counter();
         void deleteEvent(string Eventdelete);
         void namesearchevent(string eventname);
         void timesearchevent(string eventtime);
         void prioritysearchevent(string eventprio);
+        void sortbyprio();
 
     protected:
     private:

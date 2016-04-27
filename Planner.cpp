@@ -1,5 +1,6 @@
 #include "Planner.h"
-
+#include <string>
+#include <iostream>
 Planner::Planner()
 {
     head = NULL;
@@ -24,11 +25,13 @@ void Planner::printEvent(){
     tmp=head;
     int counter=0;
     while(tmp!=NULL){
-        cout<<"Time "<<tmp->Time<<endl;
-        cout<<"Values "<<tmp->Values<<endl;
-        cout<<"Event "<<tmp->Event<<endl;
+        cout<<"==="<<endl;
+        cout<<"Time: "<<tmp->Time<<endl;
+        cout<<"Priority: "<<tmp->Values<<endl;
+        cout<<"Name: "<<tmp->Event<<endl;
         tmp=tmp->next;
         counter++;
+        cout<<"==="<<endl;
     }
     if (counter==0){
         cout<<"There are currently no plans on your schedule"<<endl;
@@ -137,3 +140,70 @@ void Planner::prioritysearchevent(string eventprio){
         }
         cout<<"No event found under this priority level"<<endl;
 }
+void Planner::sortbyprio(){
+    Plans *tmp=head;
+    Plans *timearr[100];
+    int counter=0;
+    if(head->next==NULL){
+        cout<<head->Event<<" has a priority level of: "<<head->Values<<endl;
+        cout<<"This is the only plan on your schedule currently"<<endl;
+        return;
+    }
+    while(tmp!=NULL){
+        timearr[counter]=tmp;
+        counter++;
+        tmp=tmp->next;
+    }
+
+int count2=0;
+    for(int p=0;p<counter;p++){
+
+            count2=count2+1;
+
+    }
+    Plans *swap1=NULL;
+    for(int i=0; i<counter-1; i++)
+    {
+        for(int j=0; j<counter-1; j++)
+        {
+            if(timearr[j]->Values<timearr[j+1]->Values)
+            {
+                swap1=timearr[j];
+                timearr[j]=timearr[j+1];
+                timearr[j+1]=swap1;
+
+            }
+
+        }
+    }
+
+    for(int x=0; x<counter; x++){
+        cout<<"Plan Name: "<<timearr[x]->Event<<"  has a priority of: "<<timearr[x]->Values<<" and is scheduled for time: "<<timearr[x]->Time<<endl;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
