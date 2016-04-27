@@ -36,10 +36,11 @@ int main()
             cin.ignore();
             getline(cin,planname);
             cout<<"what time is this plan at?"<<endl;
-            cin>>plantime;
+            cin.ignore();
+            getline(cin,plantime);
             cout<<"what is the priority level of this plan? On a scale 1 to 10. 10 being very important"<<endl;
             cin.ignore();
-            cin>>planvalue;
+            getline(cin,planvalue);
             test.addEvent(plantime,planname,planvalue);
         }
         if(choice=="2"){
