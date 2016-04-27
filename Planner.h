@@ -18,20 +18,19 @@ struct Plans{
         next=initnext;
         previous=initprevious;
     }
-
-
 };
 class Planner
 {
     public:
         Planner();
         ~Planner();
-        void buildNetwork();
+        //void buildNetwork();
         void addEvent(string time, string planname, string planvalue);
-        void deleteEvent(string event);
+        void deleteEvent(string time, string planname, string planvalue);
         void traverse();
         void printEvent();
-        void clearPalnner();
+        void printDeletedEvent();
+        void clearPlanner();
         void OrganizeTime(string time);
         void OrganizePriority(int Level);
         void OrganizeAlpha(string Letters);
