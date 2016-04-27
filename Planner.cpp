@@ -56,11 +56,10 @@ void Planner::deleteEvent(string time, string planname, string planvalue){
             current=current->next;
         }
         if(current != NULL){
-
-            previous = current
+            previous = current;
             current = current->previous;
-
             current->next->previous = current->previous;
+            delete previous;
 
         }
         else{
