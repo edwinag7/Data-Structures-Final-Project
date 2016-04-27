@@ -51,12 +51,16 @@ void Planner::deleteEvent(string time, string planname, string planvalue){
 
 
         Plans *current = head;
-        Plans *Prev = NULL;
+        Plans *previous = NULL;
         while(current != NULL &&(current->Event != time)&&(current->Time != planname)&&(current->Values != planvalue)){
             current=current->next;
         }
         if(current != NULL){
 
+            previous = current
+            current = current->previous;
+
+            current->next->previous = current->previous;
 
         }
         else{
