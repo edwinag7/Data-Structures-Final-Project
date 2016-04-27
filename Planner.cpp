@@ -16,16 +16,22 @@ void Planner::clearPlanner(){
          delete head;
          tmp=head;
      }
+     cout<<"Schedule cleared"<<endl;
 
 }
 void Planner::printEvent(){
     Plans *tmp=NULL;
     tmp=head;
+    int counter=0;
     while(tmp!=NULL){
         cout<<"Time "<<tmp->Time<<endl;
         cout<<"Values "<<tmp->Values<<endl;
         cout<<"Event "<<tmp->Event<<endl;
         tmp=tmp->next;
+        counter++;
+    }
+    if (counter==0){
+        cout<<"There are currently no plans on your schedule"<<endl;
     }
 }
 void Planner::addEvent(string time, string planname, string planvalue)
@@ -44,26 +50,90 @@ void Planner::addEvent(string time, string planname, string planvalue)
         addPlan->previous=current;
         current->next=addPlan;
         }
+        cout<<"Event Added"<<endl;
 }
-void Planner::deleteEvent(string time, string planname, string planvalue){
+void Planner::counter(){
+    int counter=0;
+    Plans *tmp=head;
+    while(tmp!=NULL){
+        tmp=tmp->next;
+        counter++;
+    }
+    cout<<"You currently have "<<counter<<" plans on your schedule"<<endl;
+}
 
+void Planner::deleteEvent(string Eventdelete)
+{
+    Plans *current=head;
+    Plans *deleteplan= new Plans;
+    while (deleteplan->Event!=Eventdelete && current->next!=NULL)
+    {
+        current=current->next;
+    }
+    if(head->Event==Eventdelete){
+        Plans *tmp=head;
+        head=head->next;
+        delete tmp;
+    }
+    else if(current->next==NULL)
+    {
+        deleteplan = current;
+        deleteplan->previous->next=deleteplan->next;  //error here
+        delete deleteplan;
 
+    }
+    else
+    {
+        cout<<"2"<<endl;
+        deleteplan=current;
+        deleteplan->previous->next=deleteplan->next;
+        deleteplan->next->previous=deleteplan->previous;
+        delete deleteplan;
+    }
 
+}
+void Planner::namesearchevent(string eventname){
+        Plans *tmp=head;
 
-        Plans *current = head;
-        Plans *previous = NULL;
-        while(current != NULL &&(current->Event != time)&&(current->Time != planname)&&(current->Values != planvalue)){
-            current=current->next;
+        while(tmp!=NULL){
+
+            if(tmp->Event==eventname){
+                cout<<"Event found!"<<endl;
+                cout<<"This event is at the time: "<<tmp->Time<<" ,and has a priority value of: "<<tmp->Time<<endl;
+                return;
+            }
+            else{
+                tmp=tmp->next;
+            }
         }
-        if(current != NULL){
-            previous = current;
-            current = current->previous;
-            current->next->previous = current->previous;
-            delete previous;
+        cout<<"No event found under this name"<<endl;
+}
+void Planner::timesearchevent(string eventtime){
+        Plans *tmp=head;
 
+        while(tmp!=NULL){
+            if(tmp->Time==eventtime){
+                cout<<"Event found!"<<endl;
+                cout<<"At this time you have an event named: "<<tmp->Event<<" ,and it has a priority level of: "<<tmp->Values<<endl;
+                return;
+            }
+            else{
+                tmp=tmp->next;
+            }
         }
-        else{
-            cout << "not found" << endl;
+        cout<<"No event found at this time"<<endl;
+}
+void Planner::prioritysearchevent(string eventprio){
+        Plans *tmp=head;
+        while(tmp!=NULL){
+            if(tmp->Values==eventprio){
+                cout<<"Event found!"<<endl;
+                cout<<"You have an event under this priority level called: "<<tmp->Event<<" ,and it is schedule for the time: "<<tmp->Time<<endl;
+                return;
+            }
+            else{
+                tmp=tmp->next;
+            }
         }
-
+        cout<<"No event found under this priority level"<<endl;
 }

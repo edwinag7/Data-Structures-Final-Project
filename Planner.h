@@ -27,14 +27,14 @@ class Planner
         //void buildNetwork();
         void addEvent(string time, string planname, string planvalue);
         void deleteEvent(string time, string planname, string planvalue);
-        void traverse();
         void printEvent();
         void printDeletedEvent();
         void clearPlanner();
-        void OrganizeTime(string time);
-        void OrganizePriority(int Level);
-        void OrganizeAlpha(string Letters);
-
+        void counter();
+        void deleteEvent(string Eventdelete);
+        void namesearchevent(string eventname);
+        void timesearchevent(string eventtime);
+        void prioritysearchevent(string eventprio);
 
     protected:
     private:
