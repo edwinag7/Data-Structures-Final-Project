@@ -52,7 +52,12 @@ int main()
             cout<<"What is the name of the plan you want to delete?"<<endl;
             cin.ignore();
             getline(cin, plantodelete);
-            test.deleteEvent(plantodelete);
+            if(test.checkPlanExists(plantodelete)){
+                test.deleteEvent(plantodelete);
+            }
+            else{
+                cout<<"No plan exists under this title"<<endl;
+            }
         }
         if(choice == "4"){
             test.clearPlanner();
