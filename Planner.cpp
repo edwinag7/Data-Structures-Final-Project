@@ -181,23 +181,38 @@ int count2=0;
 }
 bool Planner::scheduleConflict()
 {
-    Plans *tmp = new Plans;
+    Plans *tmp = head;
     Plans *tmp2 = new Plans;
-    while (tmp != NULL && tmp2 != NULL)
+    while (tmp != NULL)
     {
-        if (tmp->Time != tmp2->Time)
+
         /* If we reach here, then a and b are not NULL and
            their data is same, so move to next nodes in both
            lists */
+        //tmp = tmp->next;
+        //tmp2 = tmp2->next;
+        if(tmp->next != NULL)
+        {
+            tmp2= tmp->next;
+            while(tmp2 != NULL)
+            {
+
+               if (tmp->Time == tmp2->Time)
+               {
+
+                cout<<"There are multiple events at one time - there is a conflict"<<endl;
+                return false;
+               }
+               tmp2=tmp2->next;
+            }
+        }
         tmp = tmp->next;
-        tmp2 = tmp2->next;
-        cout<<"There are multiple events at one time - there is a conflict"<<endl;
-        return false;
     }
 
     // If linked lists are identical, then 'a' and 'b' must
     // be NULL at this point.
-    return (tmp == NULL && tmp2 == NULL);
+    //return (tmp == NULL && tmp2 == NULL);
     cout<<"there our no conflicts on the schedule"<<endl;
+    return true;
 
 }
