@@ -34,6 +34,9 @@ class Planner
         void prioritysearchevent(string eventprio);
         void sortbyprio();
         bool scheduleConflict();
+
+        bool checkPlanExists(string plan);
+
     protected:
     private:
         Plans *head = NULL;
